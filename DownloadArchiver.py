@@ -9,19 +9,21 @@ def fileWalker(directory):
 
 	#return os.listdir() #returns list of sub folders and files in current dir
 
+	files = []
 	for folderName, subFolders, fileNames in os.walk(directory):
-		print("the current folder is "+ folderName)
+	#	print("the current folder is "+ folderName)
 
-		for subFolder in subFolders:
-			print ("SUBFOLDER OF "+ folderName + ": "+ subFolder)
+		# for subFolder in subFolders:
+		# 	print ("SUBFOLDER OF "+ folderName + ": "+ subFolder)
 
 		for fileName in fileNames:
-			print("FILE INSIDE "+ folderName + ": "+ fileName)
+			#print("FILE INSIDE "+ folderName + ": "+ fileName)
+			files = fileName
 
 		print("")
 
 
-	return fileNames
+	return files
 
 def folderCreator(directory, fileTypes):
 	#create folders based on file types
@@ -52,7 +54,13 @@ def fileMover(file, fileTypes, directory):
 			source = directory + "\\" + file
 			destination = directory + "\\" + fileType + "\\" + file
 
-			os.rename(source, destination)
+
+			#need a better fix for this
+		else:		#does the same thing except only adds them to Other
+			source = directory +"\\"+file
+			destination = directory + "\\" + fileType + "\\" +file
+
+		os.rename(source, destination)
 
 	return
 
@@ -64,7 +72,7 @@ def main():
 	fileTypes["Audio"] = ["mp3", "wav", "aiff", "flac", "aac"]
 	fileTypes["Video"] = ["m4v", "flv", "mpeg", "mov", "mpg", "mpe", "wmv", \
 	                      "MOV", "mp4"]
-	fileTypes["Documents"] = ["doc", "docx", "txt", "ppt", "pptx", "pdf", "rtf"]
+	fileTypes["Documents"] = ["doc", "docx", "txt", "ppt", "pptx", "pdf", "rtf", "xlsx"]
 	fileTypes["Exe"] = ["exe"]
 	fileTypes["Compressed"] = ["zip", "tar", "7", "rar"]
 	fileTypes["Other"] = [""]
@@ -72,7 +80,8 @@ def main():
 	directory = "C:\\Users\\MoCkY1998\\Downloads" #for now
 
 	files = fileWalker(directory)
-	folderCreator(directory, fileTypes)
+
+	#folderCreator(directory, fileTypes)
 
 	#iterate through list of files to add them to file mover
 	for file in files:
