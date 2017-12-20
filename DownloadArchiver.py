@@ -16,12 +16,8 @@ def fileWalker(directory):
 		# for subFolder in subFolders:
 		# 	print ("SUBFOLDER OF "+ folderName + ": "+ subFolder)
 
-		for fileName in fileNames:
-			#print("FILE INSIDE "+ folderName + ": "+ fileName)
-			files = fileName
 
-		print("")
-
+		files.extend(fileNames)
 
 	return files
 
@@ -78,6 +74,7 @@ def main():
 	fileTypes["Other"] = [""]
 
 	directory = "C:\\Users\\MoCkY1998\\Downloads" #for now
+
 
 	files = fileWalker(directory)
 
