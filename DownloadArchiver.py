@@ -46,17 +46,14 @@ def fileMover(file, fileTypes, directory):
 		return
 
 	for fileType in fileTypes.keys():
+
+		source = directory + "\\" + file
+
 		if fileFormat in fileTypes[fileType]:
-			source = directory + "\\" + file
-			destination = directory + "\\" + fileType + "\\" + file
+			destination = directory + "\\" + fileType + "\\" # + file
+			shutil.move(source, destination)
 
 
-			#need a better fix for this
-		else:		#does the same thing except only adds them to Other
-			source = directory +"\\"+file
-			destination = directory + "\\" + fileType + "\\" +file
-
-		os.rename(source, destination)
 
 	return
 
@@ -71,14 +68,14 @@ def main():
 	fileTypes["Documents"] = ["doc", "docx", "txt", "ppt", "pptx", "pdf", "rtf", "xlsx"]
 	fileTypes["Exe"] = ["exe"]
 	fileTypes["Compressed"] = ["zip", "tar", "7", "rar"]
-	fileTypes["Other"] = [""]
+	fileTypes["ISO"] = ["iso"]
 
 	directory = "C:\\Users\\MoCkY1998\\Downloads" #for now
 
 
 	files = fileWalker(directory)
 
-	#folderCreator(directory, fileTypes)
+	folderCreator(directory, fileTypes)
 
 	#iterate through list of files to add them to file mover
 	for file in files:
