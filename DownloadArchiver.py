@@ -38,6 +38,8 @@ def folderCreator(directory, fileTypes):
 
 def fileMover(file, fileTypes, directory):
 	#take as parameter a file and move it to respective folder
+	#TODO move videos to downloads folder in users/video folder
+
 
 	if "." in file:
 		temp = file.split(".")
