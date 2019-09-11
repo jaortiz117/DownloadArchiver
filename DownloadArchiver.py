@@ -18,6 +18,7 @@ def fileWalker(directory):
 
 
 		files.extend(fileNames)
+		#TODO throws error since it also walks through files already in specified folders
 
 	return files
 
@@ -71,6 +72,7 @@ def main():
 	fileTypes["Exe"] = ["exe"]
 	fileTypes["Compressed"] = ["zip", "tar", "7", "rar"]
 	fileTypes["ISO"] = ["iso"]
+	fileTypes["Torrents"] = ["torrent"]
 
 	directory = "C:\\Users\\MoCkY1998\\Downloads" #for now
 
@@ -83,6 +85,9 @@ def main():
 	for file in files:
 		fileMover(file, fileTypes, directory)
 
+
+	#TODO dump created folders in appropriate PC folders
+	#TODO make a UI that can save these settings and autorun app at set intervals
 	print("DONE")
 
 main()
